@@ -1,3 +1,10 @@
+#!/usr/bin/python3
+"""
+This module contains a function that determines if all the box
+in an array of boxes can be opened.
+"""
+
+
 def canUnlockAll(boxes):
     """
     This script contains a function that determines if all the box
@@ -22,3 +29,5 @@ def canUnlockAll(boxes):
                 unlocked_boxes.add(key)
                 # Add the new key to the list of keys to be processed
                 keys.append(key)
+    # Check if all boxes are unlocked
+    return len(unlocked_boxes) == boxLen
