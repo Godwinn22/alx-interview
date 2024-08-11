@@ -7,19 +7,21 @@ needed to result in exactly n H characters in a file.
 
 def minOperations(n):
     """
-    Calculate the minimum number of operations required to obtain exactly n 'H' characters 
-    in a text file starting with a single 'H', using only two operations: "Copy All" and "Paste".
-    
+    Calculate the minimum number of operations required to obtain exactly n 'H'
+    characters in a text file starting with a single 'H', using only
+    two operations: "Copy All" and "Paste".
+
     Args:
     n (int): The desired number of 'H' characters.
-    
+
     Returns:
-    int: The minimum number of operations required. Returns 0 if n is less than or equal to 1.
-    
+    int: The minimum number of operations required.
+    Returns 0 if n is less than or equal to 1.
+
     Example:
     >>> minOperations(9)
     6
-    
+
     Explanation:
     - Start with a single 'H'.
     - Copy All (1 operation) and Paste (1 operation): H -> HH
@@ -45,6 +47,6 @@ def minOperations(n):
             n //= divisor
         # Move to the next potential divisor
         divisor += 1
-        
+
     # Return the total number of operations
     return operations
