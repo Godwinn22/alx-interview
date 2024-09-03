@@ -23,18 +23,23 @@ if (process.argv.length > 2) {
     const characters = movieData.characters;
 
     // For each character URL, send a request to get the character details
-    characters.forEach((charactersUrl) => {
-      request(charactersUrl, (err, _, charBody) => {
-        // checking for errors
-        if (err) {
-          console.log(err);
-          return;
-        }
+    const characterNames = characters.forEach(
+      (charactersUrl) =>
+        new Promise((resolve, reject) => {
+          request(charactersUrl, (err, _, charBody) => {
+            // checking for errors
+            if (err) {
+              // If the request fails, the Promise is rejected
+              reject(err);
+            }
 
-        // Parse the response body as JSON and print the character's name
-        const characterData = JSON.parse(charBody);
-        console.log(characterData.name);
-      });
-    });
+            // If successful, the Promise is fulfilled with the character's name
+            resolve(JSON.parse(charBody).name);
+          });
+        })
+    );
+    Promise.all(characterNames)
+      .then((names) => console.log(names.join('\n')))
+      .catch((errs) => console.log(errs));
   });
 }
