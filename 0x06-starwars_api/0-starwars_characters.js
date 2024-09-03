@@ -23,7 +23,7 @@ if (process.argv.length > 2) {
     const characters = movieData.characters;
 
     // For each character URL, send a request to get the character details
-    characters.map((charactersUrl) => {
+    characters.forEach((charactersUrl) => {
       request(charactersUrl, (err, _, charBody) => {
         // checking for errors
         if (err) {
