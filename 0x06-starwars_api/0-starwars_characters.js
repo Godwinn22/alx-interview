@@ -23,7 +23,7 @@ if (process.argv.length > 2) {
     const characters = movieData.characters;
 
     // For each character URL, send a request to get the character details
-    const characterNames = characters.forEach(
+    const characterNames = characters.map(
       (charactersUrl) =>
         new Promise((resolve, reject) => {
           request(charactersUrl, (err, _, charBody) => {
@@ -38,8 +38,8 @@ if (process.argv.length > 2) {
           });
         })
     );
-    Promise.all(characterNames)
-      .then((names) => console.log(names.join('\n')))
-      .catch((errs) => console.log(errs));
+	Promise.all(characterNames)
+	  .then(names => console.log(names.join('\n')))
+	  .catch(errs => console.log(errs))
   });
 }
