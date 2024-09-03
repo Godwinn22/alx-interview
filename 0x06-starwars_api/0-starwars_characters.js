@@ -38,8 +38,8 @@ if (process.argv.length > 2) {
           });
         })
     );
-	Promise.all(characterNames)
-	  .then(names => console.log(names.join('\n')))
-	  .catch(errs => console.log(errs))
+    Promise.all(characterNames)
+      .then((names) => console.log(names.join('\n')))
+      .catch((errs) => console.log(errs));
   });
 }
