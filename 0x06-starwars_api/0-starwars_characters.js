@@ -9,7 +9,7 @@ const apiUrl = `https://swapi-api.alx-tools.com/api/films/${movieId}/`;
 
 // Send a request to the Star Wars API to get the movie details
 if (process.argv.length > 2) {
-  request(apiUrl, (err, _, body) => {
+  request(apiUrl, (err, _, filmBody) => {
     // checking for errors
     if (err) {
       console.log('The error is :' + err);
@@ -17,14 +17,14 @@ if (process.argv.length > 2) {
     }
 
     // Parse the response body as JSON
-    const movieData = JSON.parse(body);
+    const movieData = JSON.parse(filmBody);
 
     // Get the list of character URLs from the movie data
     const characters = movieData.characters;
 
     // For each character URL, send a request to get the character details
     characters.map((charactersUrl) => {
-      return request(charactersUrl, (err, _, body) => {
+      return request(charactersUrl, (err, _, charBody) => {
         // checking for errors
         if (err) {
           console.log(err);
@@ -32,7 +32,7 @@ if (process.argv.length > 2) {
         }
 
         // Parse the response body as JSON and print the character's name
-        const characterData = JSON.parse(body);
+        const characterData = JSON.parse(charBody);
         console.log(characterData.name);
       });
     });
