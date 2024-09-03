@@ -24,7 +24,7 @@ if (process.argv.length > 2) {
 
     // For each character URL, send a request to get the character details
     characters.map((charactersUrl) => {
-      return request(charactersUrl, (err, _, charBody) => {
+      request(charactersUrl, (err, _, charBody) => {
         // checking for errors
         if (err) {
           console.log(err);
